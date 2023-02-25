@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  namespace: sysviewer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: app
+  template:
+    metadata:
+      labels:
+        component: app
+    spec:
+      containers:
+        - name: sysviewer
+          image: shayelbaz90/sysview:latest
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              memory: 1Gi
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysqlpassword
+                  key: MYSQL_ROOT_PASSWORD
+          volumeMounts:
+          - name: pv-storage
+            mountPath: "/share"
+      volumes:
+      - name: environments
+        secret:
+          secretName: chef-dev-k8s2
+      - name: pv-storage
+        persistentVolumeClaim:
+          claimName: pv-claim
+
+      imagePullSecrets:
+        - name: registry-secret

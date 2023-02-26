@@ -18,7 +18,3 @@ spec:
             name: cluster-ip-service
             port:
               name: http
-  ports:
-  - name: http
-    port: 8000
-    protocol: TCP

@@ -17,4 +17,4 @@ spec:
           service:
             name: cluster-ip-service
             port:
-              number: http
+              name: http

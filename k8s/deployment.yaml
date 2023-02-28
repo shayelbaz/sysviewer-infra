@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: sysviewer
-          image: shayelbaz90/sysview:36
+          image: shayelbaz90/sysview:37
           resources:
             limits:
               memory: 1Gi

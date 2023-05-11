@@ -1,0 +1,16 @@
+image:
+  repository: shayelbaz90/mock-node
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: 6
+memlimit: 128Mi
+service:
+  type: ClusterIP
+  port: 8000
+ingress:
+  enabled: true
+namespace: mock-helm
+collectorConfigMap: 
+  name: my-config-collectors 
+app:
+  name: mock

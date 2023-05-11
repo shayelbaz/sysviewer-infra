@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}-deployment
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: app
+  template:
+    metadata:
+      labels:
+        component: app
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            limits:
+              memory: {{ .Values.memlimit }}
+            requests:
+              memory: {{ .Values.memlimit }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: API_HOST
+              value: {{ .Values.env.collector_api_host }}
+      volumes:
+      - name: environments
+        secret:
+          secretName: chef-dev-k8s2
+      imagePullSecrets:
+        - name: registry-secret

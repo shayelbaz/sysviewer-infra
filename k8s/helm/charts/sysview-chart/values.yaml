@@ -1,0 +1,16 @@
+image:
+  repository: shayelbaz90/sysview
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "kind2"
+memlimit: "512Mi"
+service:
+  type: ClusterIP
+  port: 8000
+ingress:
+  enabled: true
+namespace: sysview-helm
+app:
+  name: sysview
+env:
+  collector_api_host: http://mock.mock-helm.svc.cluster.local

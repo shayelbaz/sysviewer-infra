@@ -29,6 +29,8 @@ spec:
                 secretKeyRef:
                   name: mysqlpassword
                   key: MYSQL_ROOT_PASSWORD
+            - name: API_HOST
+              value: "http://mock.default.svc.cluster.local"
           volumeMounts:
           - name: pv-storage
             mountPath: "/share"

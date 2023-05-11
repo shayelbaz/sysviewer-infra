@@ -2,7 +2,7 @@ image:
   repository: shayelbaz90/sysview
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "38"
+  tag: "kind2"
 memlimit: "512Mi"
 service:
   type: ClusterIP

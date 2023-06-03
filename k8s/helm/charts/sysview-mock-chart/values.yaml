@@ -2,7 +2,7 @@ image:
   repository: shayelbaz90/mock-node
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 17
+  tag: 18
 memlimit: 128Mi
 service:
   type: ClusterIP
